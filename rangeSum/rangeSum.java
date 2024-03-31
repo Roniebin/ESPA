@@ -78,9 +78,9 @@
 // public static void main(String agrs[]) throws Exception {
 
 // try {
-// FileReader fileReader = new FileReader("rangeSum.inp");
+// FileReader fileReader = new FileReader(".rangeSum/rangeSum.inp");
 // BufferedReader bufferedReader = new BufferedReader(fileReader);
-// FileWriter fileWriter = new FileWriter("rangeSum.out");
+// FileWriter fileWriter = new FileWriter(".rangeSum/rangeSum.out");
 // BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
 // StringBuilder sb = new StringBuilder();

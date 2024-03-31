@@ -9,9 +9,9 @@ public class cycle {
     public static void main(String agrs[]) throws Exception {
 
         try {
-            FileReader fileReader = new FileReader("cycle.inp");
+            FileReader fileReader = new FileReader("./cycle.cycle.inp");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            FileWriter fileWriter = new FileWriter("cycle.out");
+            FileWriter fileWriter = new FileWriter("./cycle/cycle.out");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             StringBuilder sb = new StringBuilder();

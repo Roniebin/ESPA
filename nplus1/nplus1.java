@@ -15,10 +15,10 @@
 // StringBuilder sb = new StringBuilder();
 // try {
 
-// FileReader fileReader = new FileReader("3nplus1.inp");
+// FileReader fileReader = new FileReader("./nplus1/3nplus1.inp");
 // BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-// FileWriter fileWriter = new FileWriter("3nplus1.out");
+// FileWriter fileWriter = new FileWriter("./nplus1/3nplus1.out");
 
 // BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 

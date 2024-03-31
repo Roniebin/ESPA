@@ -8,9 +8,9 @@ public class grid {
     public static void main(String agrs[]) throws Exception {
 
         try {
-            FileReader fileReader = new FileReader("grid.inp");
+            FileReader fileReader = new FileReader("./grid/grid.inp");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            FileWriter fileWriter = new FileWriter("grid.out");
+            FileWriter fileWriter = new FileWriter("./grid/grid.out");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             int mod = 1000000007;
 

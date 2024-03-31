@@ -13,10 +13,10 @@
 
 // try {
 
-// FileReader fileReader = new FileReader("trip.inp");
+// FileReader fileReader = new FileReader("./trip/trip.inp");
 // BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-// FileWriter fileWriter = new FileWriter("trip.out");
+// FileWriter fileWriter = new FileWriter("./trip/trip.out");
 
 // BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 

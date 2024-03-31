@@ -82,9 +82,9 @@ public class rmq {
     public static void main(String agrs[]) throws Exception {
 
         try {
-            FileReader fileReader = new FileReader("rmq.inp");
+            FileReader fileReader = new FileReader("./rmq/rmq.inp");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            FileWriter fileWriter = new FileWriter("rmq.out");
+            FileWriter fileWriter = new FileWriter("./rmq/rmq.out");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             StringBuilder sb = new StringBuilder();
@@ -132,7 +132,7 @@ public class rmq {
             bufferedWriter.flush();
 
         } catch (Exception e) {
-
+            System.err.println(e);
         }
     }
 }

@@ -336,9 +336,9 @@
 // rbt T = new rbt();
 // StringBuilder sb = new StringBuilder();
 // try {
-// FileReader fileReader = new FileReader("rbt.inp");
+// FileReader fileReader = new FileReader("./rbt/rbt.inp");
 // BufferedReader bufferedReader = new BufferedReader(fileReader);
-// FileWriter fileWriter = new FileWriter("rbt.out");
+// FileWriter fileWriter = new FileWriter("./rbt/rbt.out");
 // BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
 // while (true) {
