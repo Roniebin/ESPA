@@ -1,163 +1,165 @@
-// import java.io.BufferedReader;
-// import java.io.BufferedWriter;
-// import java.io.FileReader;
-// import java.io.FileWriter;
-// import java.util.Arrays;
-// import java.util.Stack;
-// import java.util.StringTokenizer;
+package hull;
 
-// class Point implements Comparable<Point> {
-// int x = 0;
-// int y = 0;
-// static Point firstPoint;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.util.Arrays;
+import java.util.Stack;
+import java.util.StringTokenizer;
 
-// Point(int x, int y) {
-// this.x = x;
-// this.y = y;
-// }
+class Point implements Comparable<Point> {
+    int x = 0;
+    int y = 0;
+    static Point firstPoint;
 
-// @Override
-// public int compareTo(Point p) {
-// double angle1 = CalcAngle(firstPoint, this);
-// double angle2 = CalcAngle(firstPoint, p);
-// double distance1 = CalcDistance(firstPoint, this);
-// double distance2 = CalcDistance(firstPoint, p);
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
-// if (angle1 < angle2)
-// return -1;
-// else if (angle1 > angle2)
-// return 1;
-// else {
-// return Double.compare(distance2, distance1);
-// }
-// }
+    @Override
+    public int compareTo(Point p) {
+        double angle1 = CalcAngle(firstPoint, this);
+        double angle2 = CalcAngle(firstPoint, p);
+        double distance1 = CalcDistance(firstPoint, this);
+        double distance2 = CalcDistance(firstPoint, p);
 
-// public double CalcAngle(Point r, Point p) {
-// return Math.toDegrees(Math.atan2(p.y - r.y, p.x - r.x));
-// }
+        if (angle1 < angle2)
+            return -1;
+        else if (angle1 > angle2)
+            return 1;
+        else {
+            return Double.compare(distance2, distance1);
+        }
+    }
 
-// public double CalcDistance(Point r, Point p) {
-// return Math.sqrt(Math.pow(r.x - p.x, 2) + Math.pow(r.y - p.y, 2));
-// }
+    public double CalcAngle(Point r, Point p) {
+        return Math.toDegrees(Math.atan2(p.y - r.y, p.x - r.x));
+    }
 
-// public static int ccw(Point r, Point p, Point q) {
-// int result = (p.x - r.x) * (q.y - r.y) - (p.y - r.y) * (q.x - r.x);
-// if (result == 0)
-// return 0;
-// if (result > 0)
-// return 1;
-// return 2;
-// }
+    public double CalcDistance(Point r, Point p) {
+        return Math.sqrt(Math.pow(r.x - p.x, 2) + Math.pow(r.y - p.y, 2));
+    }
 
-// public static Point prepreItem(Stack<Point> b) {
-// Stack<Point> temp = new Stack<>();
-// temp.addAll(b);
+    public static int ccw(Point r, Point p, Point q) {
+        int result = (p.x - r.x) * (q.y - r.y) - (p.y - r.y) * (q.x - r.x);
+        if (result == 0)
+            return 0;
+        if (result > 0)
+            return 1;
+        return 2;
+    }
 
-// temp.pop();
-// return temp.peek();
-// }
+    public static Point prepreItem(Stack<Point> b) {
+        Stack<Point> temp = new Stack<>();
+        temp.addAll(b);
 
-// }
+        temp.pop();
+        return temp.peek();
+    }
 
-// public class hull {
+}
 
-// public static void main(String agrs[]) throws Exception {
+public class hull {
 
-// try {
-// FileReader fileReader = new FileReader("./hull/hull.inp");
-// BufferedReader br = new BufferedReader(fileReader);
-// FileWriter fileWriter = new FileWriter("./hull/hull.out");
-// BufferedWriter bw = new BufferedWriter(fileWriter);
+    public static void main(String agrs[]) throws Exception {
 
-// StringBuilder sb = new StringBuilder();
+        try {
+            FileReader fileReader = new FileReader("./hull/hull.inp");
+            BufferedReader br = new BufferedReader(fileReader);
+            FileWriter fileWriter = new FileWriter("./hull/hull.out");
+            BufferedWriter bw = new BufferedWriter(fileWriter);
 
-// int n = Integer.parseInt(br.readLine());
+            StringBuilder sb = new StringBuilder();
 
-// Point[] result = new Point[n];
+            int n = Integer.parseInt(br.readLine());
 
-// int min_y = 1000000;
-// int min_x = 1000000;
-// int min_idx = -1;
+            Point[] result = new Point[n];
 
-// Point center_point = new Point(0, 0);
+            int min_y = 1000000;
+            int min_x = 1000000;
+            int min_idx = -1;
 
-// for (int i = 0; i < n; i++) {
+            Point center_point = new Point(0, 0);
 
-// StringTokenizer st = new StringTokenizer(br.readLine());
-// int x = Integer.parseInt(st.nextToken());
-// int y = Integer.parseInt(st.nextToken());
+            for (int i = 0; i < n; i++) {
 
-// Point point = new Point(x, y);
+                StringTokenizer st = new StringTokenizer(br.readLine());
+                int x = Integer.parseInt(st.nextToken());
+                int y = Integer.parseInt(st.nextToken());
 
-// if (min_x > x) {
-// center_point = point;
-// min_x = x;
-// min_idx = i;
-// min_y = y;
-// } else if (min_x == x) {
-// if (min_y > y) {
-// center_point = point;
-// min_y = y;
-// min_idx = i;
-// }
-// }
-// result[i] = point;
-// }
+                Point point = new Point(x, y);
 
-// Point temp = result[0];
-// result[0] = center_point;
-// result[min_idx] = temp;
+                if (min_x > x) {
+                    center_point = point;
+                    min_x = x;
+                    min_idx = i;
+                    min_y = y;
+                } else if (min_x == x) {
+                    if (min_y > y) {
+                        center_point = point;
+                        min_y = y;
+                        min_idx = i;
+                    }
+                }
+                result[i] = point;
+            }
 
-// Point.firstPoint = result[0];
+            Point temp = result[0];
+            result[0] = center_point;
+            result[min_idx] = temp;
 
-// Arrays.sort(result, 1, n);
+            Point.firstPoint = result[0];
 
-// Stack<Point> bucket = new Stack<>();
+            Arrays.sort(result, 1, n);
 
-// bucket.push(result[0]);
-// bucket.push(result[1]);
-// bucket.push(result[2]);
+            Stack<Point> bucket = new Stack<>();
 
-// for (int i = 3; i <= n; i++) {
-// int a = 0;
-// while (true) {
-// if (i == n) {
-// a = Point.ccw(Point.prepreItem(bucket), bucket.peek(), result[0]);
-// } else {
-// a = Point.ccw(Point.prepreItem(bucket), bucket.peek(), result[i]);
-// }
-// if ((bucket.size() > 1) && (a >= 2)) {
-// bucket.pop();
-// } else {
-// break;
-// }
-// }
+            bucket.push(result[0]);
+            bucket.push(result[1]);
+            bucket.push(result[2]);
 
-// if (i != n) {
-// if (a == 0) {
-// bucket.pop();
-// }
-// bucket.push(result[i]);
-// }
-// if (a == 0) {
-// bucket.pop();
-// }
-// }
+            for (int i = 3; i <= n; i++) {
+                int checker = 0;
+                while (true) {
+                    if (i == n) {
+                        checker = Point.ccw(Point.prepreItem(bucket), bucket.peek(), result[0]);
+                    } else {
+                        checker = Point.ccw(Point.prepreItem(bucket), bucket.peek(), result[i]);
+                    }
+                    if ((bucket.size() > 1) && (checker >= 2)) {
+                        bucket.pop();
+                    } else {
+                        break;
+                    }
+                }
 
-// int c = bucket.size();
-// while (bucket.size() != 0) {
-// Point r = bucket.pop();
-// sb.insert(0, r.x + " " + r.y + "\n");
-// }
-// sb.insert(0, c + "\n");
+                if (i != n) {
+                    if (checker == 0) {
+                        bucket.pop();
+                    }
+                    bucket.push(result[i]);
+                }
+                if (checker == 0) {
+                    bucket.pop();
+                }
+            }
 
-// bw.write(sb.toString().trim());
-// bw.flush();
+            int c = bucket.size();
+            while (bucket.size() != 0) {
+                Point r = bucket.pop();
+                sb.insert(0, r.x + " " + r.y + "\n");
+            }
+            sb.insert(0, c + "\n");
 
-// } catch (
+            bw.write(sb.toString().trim());
+            bw.flush();
 
-// Exception e) {
+        } catch (
 
-// }
-// }
-// }
+        Exception e) {
+
+        }
+    }
+}

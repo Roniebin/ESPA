@@ -1,39 +1,69 @@
-// import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
 
-// public class main {
-// public static void main(String[] args) {
-// Scanner scanner = new Scanner(System.in);
+class Person implements Comparable<Person> {
+    private String name;
+    private Integer age;
 
-// int studentCnt = scanner.nextInt();
-// while (studentCnt != 0) {
-// double result1 = 0.0;
-// double result2 = 0.0;
+    public Person(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
 
-// // calc average
-// double[] money = new double[studentCnt];
-// double average = 0.0;
-// for (int i = 0; i < studentCnt; i++) {
-// money[i] = scanner.nextDouble();
-// average += money[i];
-// }
-// average /= studentCnt;
+    public String getName() {
+        return name;
+    }
 
-// for (int i = 0; i < studentCnt; i++) {
-// double sub = ((int) ((money[i] - average) * 100)) / 100.0;
-// System.out.println(sub);
-// if (sub < 0) {
-// result1 -= sub;
-// } else {
-// result2 += sub;
-// }
-// }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-// System.out.println(result1);
-// System.out.println(result2);
-// System.out.printf("$%.2f\n", Math.max(result1, result2));
-// studentCnt = scanner.nextInt();
-// }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 
-// scanner.close();
-// }
-// }
+    @Override
+    public int compareTo(Person o) {
+        if (this.age.equals(o.age)) {
+            return o.name.compareTo(this.name);
+        } else {
+            return this.age.compareTo(o.age);
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "Name='" + name + '\'' +
+                ", Age=" + age +
+                '}';
+    }
+}
+
+public class main {
+    public static void main(String[] args) {
+
+        // 배열 초기화
+        Person[] personArray = {
+                new Person("다", 20),
+                new Person("나", 40),
+                new Person("가", 20),
+                new Person("라", 5)
+        };
+
+        System.out.println("[정렬 전]");
+        for (Person person : personArray) {
+            System.out.println(person.toString());
+        }
+
+        Arrays.sort(personArray);
+        System.out.println("\n[정렬 후]");
+        for (Person person : personArray) {
+            System.out.println(person.toString());
+        }
+
+        System.out.println("\n" + Arrays.toString(personArray));
+    }
+}
